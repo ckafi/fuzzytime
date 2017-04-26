@@ -1,0 +1,7 @@
+[package]
+name = "fuzzytime"
+version = "0.1.0"
+authors = ["Tobias Frilling <tobias@frilling-online.de>"]
+
+[dependencies]
+time = "0.1"
