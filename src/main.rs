@@ -27,21 +27,12 @@ fn fuzzy_hour(time: time::Tm) -> String {
 }
 
 fn fuzzy_minute(time: time::Tm) -> String {
-    let minute = time.tm_min - RES_BEFORE;
-    let result = if minute <= 0 {"Uhr"}
-        else if minute <= 5 {"Fünf nach"}
-        else if minute <= 10 {"Zehn nach"}
-        else if minute <= 15 {"Viertel nach"}
-        else if minute <= 20 {"Zwanzig nach"}
-        else if minute <= 25 {"Fünf vor halb"}
-        else if minute <= 30 {"Halb"}
-        else if minute <= 35 {"Fünf nach halb"}
-        else if minute <= 40 {"Zwanzig vor"}
-        else if minute <= 45 {"Viertel vor"}
-        else if minute <= 50 {"Zehn vor"}
-        else if minute <= 55 {"Fünf vor"}
-        else {"Uhr"};
-    return result.into();
+    let minute = time.tm_min + RES_BEFORE;
+    let strs = ["Uhr", "Fünf nach", "Zehn nach", "Viertel nach",
+                "Zwanzig nach", "Fünf vor halb", "Halb",
+                "Fünf nach halb", "Zwanzig vor", "Viertel vor",
+                "Zehn vor", "Fünf vor", "Uhr"];
+    return strs[(minute / 5) as usize].into();
 }
 
 
